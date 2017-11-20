@@ -41,6 +41,7 @@
         SEL selector = method_getName(aMethod);
         NSString *methodName = NSStringFromSelector(selector);
         unsigned int argumentCount = method_getNumberOfArguments(aMethod);
+//        IMP imp = class_getMethodImplementation(class, selector); //获取imp
         [methodDic setValue:@(argumentCount).stringValue forKey:methodName];
     }
     free(methods);
