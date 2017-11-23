@@ -21,17 +21,18 @@
 }
 
 //方法交换
-+ (void)initialize
++ (void)load
 {
     SEL originSel = NSSelectorFromString(@"work");
     SEL newSel = NSSelectorFromString(@"newWork");
-    Method originMethod = class_getInstanceMethod([self class], originSel);
-    Method newMethod = class_getInstanceMethod([self class], newSel);
+    Method originMethod = class_getInstanceMethod(self, originSel);
+    Method newMethod = class_getInstanceMethod(self, newSel);
     method_exchangeImplementations(originMethod, newMethod);
 }
 
 - (void)newWork
 {
+    [self newWork]; //调用原有方法 
     NSLog(@"newWork");
 }
 
